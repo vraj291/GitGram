@@ -1,35 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
+import { List } from './src/components/List';
+import { UserCard } from './src/components/UserCard';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text 
-        style={styles.text}
-      >
-        Twitch
-      </Text>
-      <StatusBar style="auto" />
-      <View style={{marginTop : 20, width : 100}}>
-        <Button 
-          color= "#6441a5"
-          title= "Press Me"
-          onPress = {() => {
-            alert("You sure about that buddy ?")
-          }}
-        />
-      </View>
-    </View>
+    <ScrollView 
+      contentContainerStyle={styles.container}
+    >
+      <UserCard username="vraj291"/>
+      <UserCard username="ndan11"/>
+    </ScrollView>
   );
+}
+
+function padding(a, b, c, d) {
+  return {
+    paddingTop: a,
+    paddingRight: b ? b : a,
+    paddingBottom: c ? c : a,
+    paddingLeft: d ? d : (b ? b : a)
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#262626',
-    alignItems: 'center',
-    justifyContent: 'center',
+    ...padding(40,20)
   },
   text : {
     color : "#6441a5",
